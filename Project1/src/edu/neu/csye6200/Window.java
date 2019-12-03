@@ -9,12 +9,22 @@ import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JList;
 import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
 
-public class Window {
+public class Window{
 
-	private JFrame frame;
+	public JFrame frame;
+	JLabel lblDefault;
 
 	/**
 	 * Launch the application.
@@ -42,7 +52,7 @@ public class Window {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,9 +61,9 @@ public class Window {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		frame.getContentPane().add(tabbedPane);
 		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("Classroom Schedule", null, panel, null);
-		panel.setLayout(null);
+		JPanel classSch = new JPanel();
+		tabbedPane.addTab("Classroom Schedule", null, classSch, null);
+		classSch.setLayout(null);
 		
 		DefaultListModel<String> listModel = new DefaultListModel<>();
         listModel.addElement("Class 1");
@@ -64,21 +74,32 @@ public class Window {
 
         
 		JList<String> list = new JList<>(listModel);
-		list.setBounds(322, 35, 96, 136);
-		panel.add(list);
+		list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		list.setBackground(SystemColor.window);
+		list.setForeground(Color.BLACK);
+		list.setBounds(308, 6, 115, 220);
+		classSch.add(list);
+		list.setSelectedIndex(1);
+		list.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				lblDefault.setText(list.getSelectedValue());
+			}
+				
+		});
 		
-		JButton btnNewButton = new JButton("Select");
-		btnNewButton.setBounds(330, 181, 83, 29);
-		panel.add(btnNewButton);
+		lblDefault = new JLabel();
+		lblDefault.setBounds(42, 35, 61, 16);
+		classSch.add(lblDefault);
+		lblDefault.setText(list.getSelectedValue());
 		
-		JLabel lblSelectClass = new JLabel("Select Class");
-		lblSelectClass.setBounds(330, 7, 75, 16);
-		panel.add(lblSelectClass);
+		JPanel immun = new JPanel();
+		tabbedPane.addTab("Immunizations", null, immun, null);
 		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Immunizations", null, panel_1, null);
-		
-		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("Settings", null, panel_2, null);
+		JPanel settings = new JPanel();
+		tabbedPane.addTab("Settings", null, settings, null);
 	}
+
+
 }
