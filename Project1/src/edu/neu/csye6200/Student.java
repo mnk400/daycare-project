@@ -40,6 +40,11 @@ public class Student extends AbstractPerson {
 			this.immu = immu;
 		}
 		
+		public Student() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		
 		public Student(int studentId, Date registrationDate, String address, String phoneNumber, Immunization immu) {
 			super();
 			this.studentId = studentId;
@@ -48,6 +53,11 @@ public class Student extends AbstractPerson {
 			this.phoneNumber = phoneNumber;
 			this.immu = immu;
 		}
+		
+		public Student(String csvData) {
+			super();
+		}
+		
 		
 		@Override
 		public String toString() {
