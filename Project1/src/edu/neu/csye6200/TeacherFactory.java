@@ -1,6 +1,6 @@
 package edu.neu.csye6200;
 
-public class TeacherFactory {
+public class TeacherFactory extends AbstractPersonFactory {
 	private static TeacherFactory instance;
 	private TeacherFactory() {
 		instance = null;
@@ -13,10 +13,10 @@ public class TeacherFactory {
 		return instance;
 	}
 	
-	public static AbstractPerson getObject() {
+	public AbstractPerson getObject() {
 		return new Teacher();
 	}
-	public static AbstractPerson getObject(String csvData) {
+	public AbstractPerson getObject(String csvData) {
 		return new Teacher(csvData);
 	}
 	

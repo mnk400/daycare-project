@@ -4,6 +4,23 @@ import java.util.List;
 
 public class Group {
 	private Teacher teacher;
-	public List<Student> students;
-
+	private List<Student> students;
+	private int groupSize;
+	
+	public void setGroupSize(int groupSize) {
+		this.groupSize = groupSize;
+	}
+	
+	public int getGroupSize() {
+		return this.groupSize;
+	}
+	
+	public void addStudents(Student s) {
+		students.add(s);
+	}
+	
+	public void asssignTeacher(Teacher t) {
+		teacher = t;
+	}
 }
+

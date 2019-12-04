@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Daycare {
 		public List<Classroom> classList;
-		
 		public static void demo() {
 			
 		}

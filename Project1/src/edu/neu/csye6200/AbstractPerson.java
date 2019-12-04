@@ -33,5 +33,4 @@ public abstract class AbstractPerson {
 			this.dob = dob;
 		}
 		
-		
 }

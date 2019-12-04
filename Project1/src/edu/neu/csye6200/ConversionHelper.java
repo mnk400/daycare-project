@@ -2,7 +2,9 @@ package edu.neu.csye6200;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ConversionHelper {
 	
@@ -29,5 +31,15 @@ public class ConversionHelper {
 		return d;
 	}
 	
+	public static int DateToAge(Date d) { 
+	    Calendar todayDate = new GregorianCalendar();
+	    Calendar bday = new GregorianCalendar();
+	    bday.setTime(d);
+	    int yearsInBetween = todayDate.get(Calendar.YEAR) - bday.get(Calendar.YEAR);
+	    int monthsDiff = todayDate.get(Calendar.MONTH) - bday.get(Calendar.MONTH);
+	    int ageInMonths = yearsInBetween*12 + monthsDiff;
+	    
+	    return ageInMonths;
+	}
 
 }
