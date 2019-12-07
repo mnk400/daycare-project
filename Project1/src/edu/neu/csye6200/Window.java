@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ListSelectionEvent;
@@ -63,7 +64,6 @@ public class Window{
 		
 		JPanel classSch = new JPanel();
 		tabbedPane.addTab("Classroom Schedule", null, classSch, null);
-		classSch.setLayout(null);
 		
 		DefaultListModel<String> listModel = new DefaultListModel<>();
         listModel.addElement("Class 1");
@@ -71,28 +71,35 @@ public class Window{
         listModel.addElement("Class 3");
         listModel.addElement("Class 4");
         listModel.addElement("Class 5");
-
-        
-		JList<String> list = new JList<>(listModel);
-		list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		list.setBackground(SystemColor.window);
-		list.setForeground(Color.BLACK);
-		list.setBounds(308, 6, 115, 220);
-		classSch.add(list);
-		list.setSelectedIndex(1);
-		list.addListSelectionListener(new ListSelectionListener() {
-
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				lblDefault.setText(list.getSelectedValue());
-			}
-				
-		});
+        listModel.addElement("Class 5");
+        listModel.addElement("Class 6");
+        listModel.addElement("Class 7");
+        listModel.addElement("Class 8");
+        listModel.addElement("Class 9");
+        listModel.addElement("Class 10");
+        listModel.addElement("Class 10");
+        listModel.addElement("Class 10");
+        listModel.addElement("Class 10");
+		classSch.setLayout(null);
 		
 		lblDefault = new JLabel();
 		lblDefault.setBounds(42, 35, 61, 16);
 		classSch.add(lblDefault);
-		lblDefault.setText(list.getSelectedValue());
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(306, 16, 108, 198);
+		classSch.add(scrollPane);
+		
+		JList list = new JList(listModel);
+		scrollPane.setViewportView(list);
+		list.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				lblDefault.setText((String) list.getSelectedValue());				
+			}
+			
+		});
 		
 		JPanel immun = new JPanel();
 		tabbedPane.addTab("Immunizations", null, immun, null);
@@ -100,6 +107,4 @@ public class Window{
 		JPanel settings = new JPanel();
 		tabbedPane.addTab("Settings", null, settings, null);
 	}
-
-
 }
