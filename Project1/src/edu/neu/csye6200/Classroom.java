@@ -4,5 +4,9 @@ import java.util.*;
 
 public class Classroom {
 		private List<Group> groups;
-		String ageRange;
+		
+		public void addGroups(Group g) {
+			groups.add(g);
+		}
+		
 }
