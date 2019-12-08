@@ -56,10 +56,10 @@ public class FileUtil {
 		try (BufferedReader bufferedReader =  new BufferedReader(new FileReader(fileName))
 				) {
 			String line ="";
-			line = bufferedReader.readLine();
 			while((line = bufferedReader.readLine())!=null) {
 				entries.add(line);
 			}
+			
 			
 		} catch (Exception e) {
 			// TODO: handle exception

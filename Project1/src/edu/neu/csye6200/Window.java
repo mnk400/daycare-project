@@ -1,26 +1,35 @@
 package edu.neu.csye6200;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.JTable;
 
 public class Window{
 
@@ -55,20 +64,9 @@ public class Window{
 		tabbedPane.addTab("Classroom Schedule", null, classSch, null);
 		
 		DefaultListModel<String> listModel = new DefaultListModel<>();
-        listModel.addElement("Class 1");
-        listModel.addElement("Class 2");
-        listModel.addElement("Class 3");
-        listModel.addElement("Class 4");
-        listModel.addElement("Class 5");
-        listModel.addElement("Class 5");
-        listModel.addElement("Class 6");
-        listModel.addElement("Class 7");
-        listModel.addElement("Class 8");
-        listModel.addElement("Class 9");
-        listModel.addElement("Class 10");
-        listModel.addElement("Class 10");
-        listModel.addElement("Class 10");
-        listModel.addElement("Class 10");
+        for(Classroom c:Daycare.getClassroom()) {
+        	listModel.addElement("Class " + c.getId());
+        }
 		classSch.setLayout(null);
 		
 		lblDefault = new JLabel();
@@ -80,12 +78,62 @@ public class Window{
 		classSch.add(scrollPane);
 		
 		JList list = new JList(listModel);
+		list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		scrollPane.setViewportView(list);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		JScrollBar scrollBar = new JScrollBar(JScrollBar.VERTICAL) {
+             @Override
+             public boolean isVisible() {
+                 return true;
+             }
+         };
+        scrollPane_1.setVerticalScrollBar(scrollBar);
+		scrollPane_1.setViewportBorder(null);
+		scrollPane_1.setBounds(6, 6, 288, 220);
+		scrollPane_1.setBorder(BorderFactory.createEmptyBorder());
+		scrollPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		classSch.add(scrollPane_1);
+		
+		
+		
 		list.addListSelectionListener(new ListSelectionListener() {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				lblDefault.setText((String) list.getSelectedValue());				
+				//lblDefault.setText(Daycare.getClassroom().get(list.getSelectedIndex()).toString());
+				List<JTable> table = new ArrayList<>();
+				JPanel jp = new JPanel();
+				jp.setLayout(new BoxLayout(jp, BoxLayout.Y_AXIS));
+				int f = 0;
+				for(Group g : Daycare.getClassroom().get((list.getSelectedIndex())).getGroups()) {
+						f = f + 1;
+						//lblDefault.setText("Group" + f);
+						DefaultTableModel m1 = new DefaultTableModel();
+						m1.setColumnCount(3);
+						for(Student s: g.getStudents()) {
+							m1.addRow(new Object[] {s.getStudentId(),s.getFirstName(),s.getLastName()});
+						}
+						table.add(new JTable(m1));
+						table.get(f-1).setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+						//table.get(f-1).setBackground(SystemColor.window);
+						
+					}
+				int ctr = 0;
+				for(JTable t : table) {
+					JLabel labelTeacher = new JLabel(Daycare.getClassroom().get((list.getSelectedIndex())).getGroups().get(ctr).getTeacher().toString());
+					Font fnt = labelTeacher.getFont();
+					labelTeacher.setFont(fnt.deriveFont(fnt.getStyle() | Font.BOLD));
+					ctr = ctr + 1;
+					JLabel jl = new JLabel("Group" + ctr);
+					jp.setBounds(10, 10, 40, 15);
+					jp.add(jl);
+					jp.add(labelTeacher);
+					jp.add(t);
+				}
+				
+				scrollPane_1.setViewportView(jp);
+
 			}
 			
 		});

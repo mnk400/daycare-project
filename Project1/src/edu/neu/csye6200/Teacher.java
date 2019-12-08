@@ -44,7 +44,7 @@ public class Teacher extends AbstractPerson{
 		
 		@Override
 		public String toString() {
-			return "Teacher [employeeId=" + employeeId + ", joiningDate=" + joiningDate + "]";
+			return this.firstName + this.lastName;
 		}
 		
 		

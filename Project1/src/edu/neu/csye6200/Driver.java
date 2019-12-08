@@ -9,6 +9,13 @@ public class Driver {
 		//System.out.println(s1);
 		
 		Daycare.demo();
+//		for(Classroom c : Daycare.getClassroom()) {
+//			for(Group g : c.getGroups()) {
+//				for(Student s : g.getStudents()) {
+//					System.out.println(s.toString());
+//				}
+//			}
+//		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

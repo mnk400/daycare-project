@@ -20,12 +20,24 @@ public class Group {
 		students.add(s);
 	}
 	
-	public void asssignTeacher(Teacher t) {
+	public void assignTeacher(Teacher t) {
 		teacher = t;
 	}
 	
 	public Teacher getTeacher() {
 		return this.teacher;
 	}
+	
+	public List<Student> getStudents() {
+		return this.students;
+	}
+
+	@Override
+	public String toString() {
+		return students.toString();
+	}
+	
+	
+	
 }
 

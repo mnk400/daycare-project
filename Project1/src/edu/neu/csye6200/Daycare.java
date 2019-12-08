@@ -13,10 +13,13 @@ public class Daycare {
 			classList.forEach(c -> {System.out.println(); System.out.println(c);});
 		}
 		
+		public static List<Classroom> getClassroom(){
+			return classList;
+		}
 		
 		public static void demo() {
 			GroupHelper.groupMe();
-			Daycare.show();
+			//Daycare.show();
 			
 		}
 }
