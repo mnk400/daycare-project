@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 public class GroupHelper {
@@ -15,10 +16,10 @@ public class GroupHelper {
 		List<Teacher> teachers = new ArrayList<>();
 		
 		
-		List<String> tempStudents = FileUtil.readTextFile("StudentRecords.csv");
+		List<String> tempStudents = FileUtil.readTextFile("students.csv");
 		tempStudents.forEach(student -> students.add(new Student(student)));
 	
-		List<String> tempTeachers = FileUtil.readTextFile("StudentRecords.csv");
+		List<String> tempTeachers = FileUtil.readTextFile("teachers.csv");
 		tempTeachers.forEach(teacher -> teachers.add(new Teacher(teacher)));
 	
 		List<Student> sixToTwelve = students.stream().filter(student -> student.getAge() >= 6 && student.getAge() <= 12).collect(Collectors.toList());
@@ -29,11 +30,21 @@ public class GroupHelper {
 		List<Student> sixtyAndUp = students.stream().filter(student -> student.getAge() >= 60).collect(Collectors.toList());
 		
 		List<List<Student>> studentAgeGroups = new ArrayList<>();
+		
 		studentAgeGroups.add(sixToTwelve);
+		studentAgeGroups.add(thirteenToTwentyfour);
 		studentAgeGroups.add(thirteenToTwentyfour);
 		studentAgeGroups.add(thirtySixToFortySeven);
 		studentAgeGroups.add(fortyEightToFiftyNine);
 		studentAgeGroups.add(sixtyAndUp);
+		
+		ListIterator<List<Student>> li = studentAgeGroups.listIterator();
+		while(li.hasNext()) {
+			List<Student> s = li.next();
+			if(s.size() == 0) {
+				li.remove();
+			}
+		}
 		
 		int currentTeacherIndexFlag = 0; 
 		int flag = 0;
@@ -65,6 +76,8 @@ public class GroupHelper {
 	
 	public static void parseAndAdd(List<Student> studs, Teacher t, int size, int classSize) {
 		
+		System.out.println(studs);
+		System.out.println(size);
 		int numGroups = studs.size()/size + 1;
 		List<Group> groups = new ArrayList<>();
 		int temp=0;
@@ -72,7 +85,9 @@ public class GroupHelper {
 			groups.add(GroupFactory.getInstance().getObject());
 			groups.get(i).asssignTeacher(t);
 			for(int j = 0; j < size; j++) {
-				groups.get(i).addStudents(studs.get(temp+j));
+				if((temp+j)<studs.size()) {
+					groups.get(i).addStudents(studs.get(temp+j));
+				}	
 			}
 			temp = temp + size;
 		}
@@ -83,7 +98,9 @@ public class GroupHelper {
 		for(int i = 0; i<numClassrooms; i++) {
 			classes.add(ClassroomFactory.getInstance().getObject());
 			for(int j = 0; j < classSize; j++) {
-				classes.get(i).addGroups(groups.get(tempC + j));
+				if((tempC+j) < groups.size()) {
+					classes.get(i).addGroups(groups.get(tempC + j));
+				}
 			}
 			
 			tempC = tempC + classSize;

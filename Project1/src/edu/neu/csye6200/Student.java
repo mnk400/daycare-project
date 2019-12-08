@@ -9,7 +9,7 @@ public class Student extends AbstractPerson {
 		Date registrationDate;
 		String address;
 		String phoneNumber;
-		Immunization immu;
+		//Immunization immu;
 		int age;
 		
 		public int getStudentId() {
@@ -36,12 +36,12 @@ public class Student extends AbstractPerson {
 		public void setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 		}
-		public Immunization getImmu() {
-			return immu;
-		}
-		public void setImmu(Immunization immu) {
-			this.immu = immu;
-		}
+//		public Immunization getImmu() {
+//			return immu;
+//		}
+//		public void setImmu(Immunization immu) {
+//			this.immu = immu;
+//		}
 		public void setAge(int age) {
 			this.age = age;
 		}
@@ -59,7 +59,7 @@ public class Student extends AbstractPerson {
 			this.registrationDate = registrationDate;
 			this.address = address;
 			this.phoneNumber = phoneNumber;
-			this.immu = immu;
+			//this.immu = immu;
 			this.age = ConversionHelper.DateToAge(this.dob);
 		}
 		

@@ -3,7 +3,7 @@ package edu.neu.csye6200;
 import java.util.*;
 
 public class Daycare {
-		private static List<Classroom> classList;
+		private static List<Classroom> classList = new ArrayList<>();
 		
 		public static void add(Classroom c) {
 			classList.add(c);

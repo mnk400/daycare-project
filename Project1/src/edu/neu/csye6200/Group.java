@@ -1,10 +1,11 @@
 package edu.neu.csye6200;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
 	private Teacher teacher;
-	private List<Student> students;
+	private List<Student> students = new ArrayList<>();
 	private int groupSize;
 	
 	public void setGroupSize(int groupSize) {
@@ -21,6 +22,10 @@ public class Group {
 	
 	public void asssignTeacher(Teacher t) {
 		teacher = t;
+	}
+	
+	public Teacher getTeacher() {
+		return this.teacher;
 	}
 }
 
