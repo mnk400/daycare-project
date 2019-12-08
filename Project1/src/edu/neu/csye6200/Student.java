@@ -74,7 +74,7 @@ public class Student extends AbstractPerson {
  			this.registrationDate = ConversionHelper.StringToDate(field[5]);
  			this.address = field[6];
  			this.phoneNumber = field[7];
- 			FileUtil.readTextFile("Immunization"+this.studentId+".csv");
+ 			//FileUtil.readTextFile("Immunization"+this.studentId+".csv");
  			this.age = ConversionHelper.DateToAge(this.dob);
 		}
 		
@@ -82,7 +82,7 @@ public class Student extends AbstractPerson {
 		@Override
 		public String toString() {
 			return "Student [studentId=" + studentId + ", registrationDate=" + registrationDate + ", address=" + address
-					+ ", phoneNumber=" + phoneNumber + ", immu=" + immu + "]";
+					+ ", phoneNumber=" + phoneNumber + ", age=" + age + "]";
 		}
 		
 		
