@@ -148,7 +148,7 @@ public class GroupHelper {
 			tempC = tempC + classSize;
 		}
 		
-		classes.forEach(c -> Daycare.add(c));
+		classes.forEach(c -> Daycare.addClassroom(c));
 		
 	}
 	

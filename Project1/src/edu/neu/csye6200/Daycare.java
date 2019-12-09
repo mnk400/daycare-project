@@ -2,10 +2,13 @@ package edu.neu.csye6200;
 
 import java.util.*;
 
+import edu.neu.csye6200.immunisations.*;
+
 public class Daycare {
 		private static List<Classroom> classList = new ArrayList<>();
+
 		
-		public static void add(Classroom c) {
+		public static void addClassroom(Classroom c) {
 			classList.add(c);
 		}
 		
@@ -16,10 +19,15 @@ public class Daycare {
 		public static List<Classroom> getClassroom(){
 			return classList;
 		}
+
+		
 		
 		public static void demo() {
 			GroupHelper.groupMe();
 			//Daycare.show();
+			//loadImmunizationRules();
 			
 		}
+		
+		
 }

@@ -1,15 +1,14 @@
 package edu.neu.csye6200;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class Immunization {
-	Map<String, List<Date>> immunisations;
+public interface Immunizable {
 
-	public Immunization(Map<String, List<Date>> immunisations) {
-		super();
-		this.immunisations = immunisations;
-	}
+	public void checkImmunizations();
+	public void sendWarning();
+	
 
 }

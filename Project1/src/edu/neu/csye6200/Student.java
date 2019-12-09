@@ -1,15 +1,19 @@
 package edu.neu.csye6200;
 
 import java.text.ParseException;
+import edu.neu.csye6200.immunisations.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Student extends AbstractPerson {
 		int studentId;
 		Date registrationDate;
 		String address;
 		String phoneNumber;
-		//Immunization immu;
+		private List<AbstractImmunization> immunisations = new ArrayList<>();
+		
 		int age;
 		
 		public int getStudentId() {
@@ -36,31 +40,47 @@ public class Student extends AbstractPerson {
 		public void setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 		}
-//		public Immunization getImmu() {
-//			return immu;
-//		}
-//		public void setImmu(Immunization immu) {
-//			this.immu = immu;
-//		}
 		public void setAge(int age) {
 			this.age = age;
 		}
 		public int getAge() {
 			return age;
 		}
+		
 		public Student() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
 		
-		public Student(int studentId, Date registrationDate, String address, String phoneNumber, Immunization immu) {
+		public Student(int studentId, Date registrationDate, String address, String phoneNumber) {
 			super();
 			this.studentId = studentId;
 			this.registrationDate = registrationDate;
 			this.address = address;
 			this.phoneNumber = phoneNumber;
-			//this.immu = immu;
 			this.age = ConversionHelper.DateToAge(this.dob);
+			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
+			int flag = 0;
+			for(String s : tempImmu) {
+				String[] fields = s.split(",");
+				String n = fields[0];
+				List<Date> d = new ArrayList<>();
+				for(int i = 1; i < fields.length-1; i++) {
+						d.add(ConversionHelper.StringToDate(fields[i]));
+				}
+				
+				if(flag == 0) {
+					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
+				} else if(flag == 1) {
+					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
+				} else if(flag == 2) {
+					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
+				} else if(flag == 3) {
+					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
+				}
+				
+			}			
+			
 		}
 		
 		public Student(String csvData) {
@@ -74,8 +94,27 @@ public class Student extends AbstractPerson {
  			this.registrationDate = ConversionHelper.StringToDate(field[5]);
  			this.address = field[6];
  			this.phoneNumber = field[7];
- 			//FileUtil.readTextFile("Immunization"+this.studentId+".csv");
  			this.age = ConversionHelper.DateToAge(this.dob);
+ 			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
+			int flag = 0;
+			for(String s : tempImmu) {
+				String[] fields = s.split(",");
+				String n = fields[0];
+				List<Date> d = new ArrayList<>();
+				for(int i = 1; i < fields.length-1; i++) {
+						d.add(ConversionHelper.StringToDate(fields[i]));
+				}
+				if(flag == 0) {
+					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
+				} else if(flag == 1) {
+					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
+				} else if(flag == 2) {
+					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
+				} else if(flag == 3) {
+					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
+				}
+				
+			}			
 		}
 		
 		
