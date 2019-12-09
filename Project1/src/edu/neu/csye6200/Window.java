@@ -34,6 +34,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import java.awt.CardLayout;
 import java.awt.GridLayout;
@@ -44,7 +45,9 @@ public class Window{
 	public JFrame frame;
 	JLabel lblDefault;
 	private JTable table_1;
-	private int studint;
+	static int studint;
+//	pimport javax.swing.JEditorPane;
+
 
 	/**
 	 * Launch the application.
@@ -184,51 +187,100 @@ public class Window{
 		immun.add(btnNewButton_1);
 		
 		btnNewButton.addActionListener(new ActionListener(){
-
 			@Override
-			public void actionPerformed(ActionEvent e) {				
-				JDialog dd = new JDialog();
-				dd.setTitle(GroupHelper.students.get(studint).getFirstName() + " " + GroupHelper.students.get(studint).getLastName());
-				dd.setBounds(0, 0, 330, 175);
-	            dd.setSize(330, 175);
-	            dd.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-	            
+			public void actionPerformed(ActionEvent e) {
+				//WindowSubViews view2 = new WindowSubViews();
+				//view2.initializeDetails();
+				JDialog dd = new JDialog(frame, GroupHelper.students.get(studint).getFirstName() + " " + GroupHelper.students.get(studint).getLastName()); 
+				dd.setSize(270,330);
 				JPanel pan = new JPanel();
 				pan.setLayout(null);
 				
-				
-				JLabel fn = new JLabel("First Name:"); 
-				Font f = fn.getFont();
-				fn.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
-	            JLabel fname = new JLabel(GroupHelper.students.get(studint).getFirstName());             
-	            JLabel ln = new JLabel("Last Name:"); 
-	            ln.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 	            JLabel lname = new JLabel(GroupHelper.students.get(studint).getLastName()); 
+	            JLabel fname = new JLabel(GroupHelper.students.get(studint).getFirstName());
+	            JLabel ddate = new JLabel(ConversionHelper.DateToString(GroupHelper.students.get(studint).getDob()));
+	        
 	            JLabel id = new JLabel("Student ID:");
+	            JLabel fn = new JLabel("First Name");
+	            JLabel ln = new JLabel("Last Name");
+	            JLabel dob = new JLabel("Date of Birth");
+	            Font f = id.getFont();
 	            id.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            fn.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            ln.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            dob.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 	            JLabel idame = new JLabel(Integer.toString(GroupHelper.students.get(studint).getStudentId()));
 	            fn.setBounds(20,20,100,15);
 	            ln.setBounds(20,40,100,15);
 	            id.setBounds(20,60,100,15);
+	            dob.setBounds(20,80,100,15);
 	            fname.setBounds(100,20,100,15);
 	            lname.setBounds(100,40,100,15);
 	            idame.setBounds(100,60,100,15);
-	            
+	            ddate.setBounds(100,80,100,15);
+	        
+            
 	            pan.add(fn);
 	            pan.add(fname);
-	            pan.add(ln);
-	            pan.add(lname);
-	            pan.add(id);
-	            pan.add(idame);
-	            
-	            dd.add(pan);
-	            dd.setVisible(true);
+            	pan.add(ln);
+            	pan.add(lname);
+            	pan.add(id);
+            	pan.add(idame);
+            	pan.add(dob);
+            	pan.add(ddate);
+            
+            	dd.add(pan);
+            	dd.setVisible(true);	
 			}
 			
 		});
 		
 		JPanel settings = new JPanel();
 		tabbedPane.addTab("Settings", null, settings, null);
+		settings.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Student CSV Location");
+		lblNewLabel.setBounds(19, 17, 144, 16);
+		settings.add(lblNewLabel);
+		
+		JLabel lblTeacherCsvLocation = new JLabel("Teacher CSV Location");
+		lblTeacherCsvLocation.setBounds(19, 45, 144, 16);
+		settings.add(lblTeacherCsvLocation);
+		
+		JTextField textField = new JTextField();
+		textField.setBounds(176, 40, 211, 26);
+		settings.add(textField);
+		textField.setColumns(10);
+		
+		JTextField textField_1 = new JTextField();
+		textField_1.setBounds(175, 12, 211, 26);
+		settings.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnSet = new JButton("Set");
+		btnSet.setBounds(312, 68, 75, 29);
+		settings.add(btnSet);
+		
+		JButton btnResetToDefault = new JButton("Default");
+		btnResetToDefault.setBounds(186, 68, 117, 29);
+		settings.add(btnResetToDefault);
+		
+		JButton btnNewButton_2 = new JButton("Add a Teacher");
+		btnNewButton_2.setBounds(19, 112, 125, 29);
+		settings.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Reload Program");
+		btnNewButton_3.setBounds(262, 180, 125, 29);
+		settings.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Force Send Email");
+		btnNewButton_4.setBounds(19, 180, 155, 29);
+		settings.add(btnNewButton_4);
+		
+		JButton btnViewTeacherList = new JButton("View Teacher List");
+		btnViewTeacherList.setBounds(19, 153, 155, 29);
+		
 	}
 }
+
 

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class ConversionHelper {
 	
@@ -40,6 +41,11 @@ public class ConversionHelper {
 	    int ageInMonths = yearsInBetween*12 + monthsDiff;
 	    
 	    return ageInMonths;
+	}
+	
+	public static String DateToString(Date d) {
+		String datef = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).format(d);
+		return datef;
 	}
 
 }
