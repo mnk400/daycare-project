@@ -10,10 +10,12 @@ import java.util.stream.Collectors;
 public class GroupHelper {
 
 	static int currentTeacherIndexFlag = 0; 
+	
+	static List<Student> students = new ArrayList<>();
+	static List<Teacher> teachers = new ArrayList<>();
 	public static void groupMe() {
 		
-		List<Student> students = new ArrayList<>();
-		List<Teacher> teachers = new ArrayList<>();
+
 		
 		
 		List<String> tempStudents = FileUtil.readTextFile("students.csv");
