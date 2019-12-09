@@ -23,7 +23,7 @@ public class Driver {
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+			}
 			}
 		});
 	}
