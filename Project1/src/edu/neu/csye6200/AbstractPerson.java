@@ -3,17 +3,21 @@ package edu.neu.csye6200;
 import java.util.*;
 
 public abstract class AbstractPerson {
-		public int id;
+		public static int id;
 		public String firstName;
 		public String lastName;
 		public Date dob;
 		
-		public int getId() {
-			return id;
-		}
-		public void setId(int id) {
-			this.id = id;
-		}
+//		public AbstractPerson() {
+//			id++;
+//		}
+//		public int getId() {
+//			return id;
+//		}
+//		public void setId(int id) {
+//			this.id = id;
+//		}
+		
 		public String getFirstName() {
 			return firstName;
 		}
