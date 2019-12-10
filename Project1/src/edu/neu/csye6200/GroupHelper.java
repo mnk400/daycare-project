@@ -98,8 +98,9 @@ public class GroupHelper {
 		parseAddTeacher(teachers, Daycare.getClassroom());
 		//System.out.println(Daycare.getClassroom());
 		
-		
-		
+		NotificationHelper.timer.cancel();
+		NotificationHelper.timer.purge();
+		NotificationHelper.configureTask();
 		
 	}
 	

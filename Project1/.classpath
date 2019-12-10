@@ -4,5 +4,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/pallaksingh/Documents/Northeastern /Sem I  (Sept - Dec 2019)/Concepts of Object Oriented Programming CSYE 6200/DayCare - CSYE6200/javax.mail.jar"/>
+	<classpathentry kind="lib" path="/Users/pallaksingh/Documents/Northeastern /Sem I  (Sept - Dec 2019)/Concepts of Object Oriented Programming CSYE 6200/DayCare - CSYE6200/additionnal.jar"/>
+	<classpathentry kind="lib" path="/Users/pallaksingh/Documents/Northeastern /Sem I  (Sept - Dec 2019)/Concepts of Object Oriented Programming CSYE 6200/DayCare - CSYE6200/activation.jar"/>
+	<classpathentry kind="lib" path="/Users/pallaksingh/Documents/Northeastern /Sem I  (Sept - Dec 2019)/Concepts of Object Oriented Programming CSYE 6200/DayCare - CSYE6200/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

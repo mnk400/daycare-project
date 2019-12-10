@@ -413,7 +413,6 @@ public class Window{
 		         pan.add(vacttt1);
 		         pan.add(vacttt2);
 		         pan.add(vacttt3);	         
-		         pan.add(vacttt4);
 		         pan.add(vac4);
 		         pan.add(vactttt1);
 		         pan.add(vactttt2);
@@ -431,7 +430,6 @@ public class Window{
 		         vacList.add(vacttt1);
 		         vacList.add(vacttt2);
 		         vacList.add(vacttt3);
-		         vacList.add(vacttt4);
 		         vacList.add(vactttt1);
 		         vacList.add(vactttt2);
 		         vacList.add(vactttt3);

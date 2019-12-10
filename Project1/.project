@@ -16,6 +16,21 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>activation.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/activation.jar</locationURI>
+		</link>
+		<link>
+			<name>additionnal.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/additionnal.jar</locationURI>
+		</link>
+		<link>
+			<name>javax.mail.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/javax.mail.jar</locationURI>
+		</link>
+		<link>
 			<name>jgoodies-common-1.8.0-sources.jar</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/jgoodies-common-1.8.0-sources.jar</locationURI>
@@ -34,6 +49,11 @@
 			<name>jgoodies-forms-1.8.0.jar</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/jgoodies-forms-1.8.0.jar</locationURI>
+		</link>
+		<link>
+			<name>mail.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/mail.jar</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

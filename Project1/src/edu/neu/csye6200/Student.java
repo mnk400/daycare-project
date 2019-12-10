@@ -70,6 +70,14 @@ public class Student extends AbstractPerson {
 		public void setImmunisationDates(List<Date> immunisationDates) {
 			this.immunisationDates = immunisationDates;
 		}
+		
+		
+		public List<AbstractImmunization> getImmunisations() {
+			return immunisations;
+		}
+		public void setImmunisations(List<AbstractImmunization> immunisations) {
+			this.immunisations = immunisations;
+		}
 		public Student() {
 			super();
 			// TODO Auto-generated constructor stub
