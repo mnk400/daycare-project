@@ -14,6 +14,10 @@ public class Student extends AbstractPerson {
 		String address;
 		String phoneNumber;
 		private List<AbstractImmunization> immunisations = new ArrayList<>();
+		String guardianName;
+		String guardianEmail;
+		List<Date> immunisationDates = new ArrayList<>();
+		
 		
 		int age;
 		
@@ -48,19 +52,42 @@ public class Student extends AbstractPerson {
 			return age;
 		}
 		
+		public String getGuardianName() {
+			return guardianName;
+		}
+		public void setGuardianName(String guardianName) {
+			this.guardianName = guardianName;
+		}
+		public String getGuardianEmail() {
+			return guardianEmail;
+		}
+		public void setGuardianEmail(String guardianEmail) {
+			this.guardianEmail = guardianEmail;
+		}
+		public List<Date> getImmunisationDates() {
+			return immunisationDates;
+		}
+		public void setImmunisationDates(List<Date> immunisationDates) {
+			this.immunisationDates = immunisationDates;
+		}
 		public Student() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
 		
-		public Student(int studentId, Date registrationDate, String address, String phoneNumber) {
+		public Student(int studentId, Date registrationDate, String address, String phoneNumber, String guardianName, String parentsEmail) {
 			super();
 			this.studentId = studentId;
 			this.registrationDate = registrationDate;
 			this.address = address;
 			this.phoneNumber = phoneNumber;
 			this.age = ConversionHelper.DateToAge(this.dob);
+			this.guardianName = guardianName;
+			this.guardianEmail = guardianEmail;
 			
+			for(int i = 0; i < 4; i++) {
+				
+			}
 //			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
 //			int flag = 0;
 //			for(String s : tempImmu) {
@@ -95,28 +122,40 @@ public class Student extends AbstractPerson {
  			this.registrationDate = ConversionHelper.StringToDate(field[4]);
  			this.address = field[5];
  			this.phoneNumber = field[6];
+ 			this.guardianName = field[7];
+ 			this.guardianEmail = field[8];
  			this.age = ConversionHelper.DateToAge(this.dob);
  			
-// 			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
-//			int flag = 0;
-//			for(String s : tempImmu) {
-//				String[] fields = s.split(",");
-//				String n = fields[0];
-//				List<Date> d = new ArrayList<>();
-//				for(int i = 1; i < fields.length-1; i++) {
-//						d.add(ConversionHelper.StringToDate(fields[i]));
-//				}
-//				if(flag == 0) {
-//					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
-//				} else if(flag == 1) {
-//					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
-//				} else if(flag == 2) {
-//					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
-//				} else if(flag == 3) {
-//					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
-//				}
-//				
-//			}			
+ 			int flag = 0;
+ 			List<Date> hepatitisB = new ArrayList<>();
+ 			List<Date> DTaP = new ArrayList<>();
+ 			List<Date> rotavirus = new ArrayList<>();
+ 			List<Date> pneumococcalConjugate = new ArrayList<>();
+ 			for(int i = 9; i < 22; i++) {
+ 				if(field[i].contentEquals("")) {
+ 					
+ 				} else {
+ 					if(i >= 9 && i < 12) {
+ 	 					hepatitisB.add(ConversionHelper.StringToDate(field[i]));
+ 	 				} 
+ 	 				if(i >= 12 && i < 16) {
+ 	 						DTaP.add(ConversionHelper.StringToDate(field[i]));
+ 	 				} 
+ 	 				if(i >= 16 && i < 19) {
+ 							rotavirus.add(ConversionHelper.StringToDate(field[i]));
+ 					} 
+ 	 				if(i >= 19 && i < 23) {
+ 						pneumococcalConjugate.add(ConversionHelper.StringToDate(field[i]));
+ 				}	
+ 				}
+ 				 
+ 			}
+
+			immunisations.add(DTaPFactory.getInstance().getObject("DTaP",DTaP,this.age));
+			immunisations.add(RotavirusFactory.getInstance().getObject("Rotavirus", rotavirus, this.age));
+			immunisations.add(HepatitisBFactory.getInstance().getObject("Hepatitis B",hepatitisB, this.age));
+			immunisations.add(PneumococcalConjugateFactory.getInstance().getObject("Pneumococcal Conjugate",pneumococcalConjugate, this.age));
+					
 		}
 		
 		

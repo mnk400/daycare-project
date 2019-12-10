@@ -182,14 +182,15 @@ public class Window{
 		scrollPane_2.setBounds(0, 0, 429, 195);
 		immun.add(scrollPane_2);	
 		
-		DefaultTableModel m2 = new DefaultTableModel();
-		m2.setColumnCount(3);
-		for(Student s:GroupHelper.students) {
-			m2.addRow(new Object[] {s.getStudentId(),s.getFirstName(),s.lastName});
-		}
+//		DefaultTableModel m2 = new DefaultTableModel();
+//		m2.setColumnCount(3);
+//		for(Student s:GroupHelper.students) {
+//			m2.addRow(new Object[] {s.getStudentId(),s.getFirstName(),s.lastName});
+//		}
 
-		table_1 = new JTable(m2);
-		scrollPane_2.setViewportView(table_1);
+		//table_1 = new JTable(m2);
+		createStudentDetailsTable(scrollPane_2);
+		//scrollPane_2.setViewportView(table_1);
 
 		
 		table_1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -418,6 +419,25 @@ public class Window{
 		         pan.add(vactttt2);
 		         pan.add(vactttt3);
 		         pan.add(vactttt4);
+		         
+		         List<JTextField> vacList = new ArrayList<>();
+		         vacList.add(vact1);
+		         vacList.add(vact2);
+		         vacList.add(vact3);
+		         vacList.add(vactt1);
+		         vacList.add(vactt2);
+		         vacList.add(vactt3);
+		         vacList.add(vactt4);
+		         vacList.add(vacttt1);
+		         vacList.add(vacttt2);
+		         vacList.add(vacttt3);
+		         vacList.add(vacttt4);
+		         vacList.add(vactttt1);
+		         vacList.add(vactttt2);
+		         vacList.add(vactttt3);
+		         vacList.add(vactttt4);
+		         
+					
 
 	            
 		         dd.add(pan);
@@ -432,14 +452,39 @@ public class Window{
 						
 						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 						Date td = todayDate.getTime();
+						StringBuilder csvSb = new StringBuilder();
+						csvSb.append(fname.getText());
+						csvSb.append(",");
+						csvSb.append(lname.getText());
+						csvSb.append(",");
+						csvSb.append(ddate.getText());
+						csvSb.append(",");
+						csvSb.append(idT.getText());
+						csvSb.append(",");
+						csvSb.append(dateFormat.format(td));
+						csvSb.append(",");
+						csvSb.append(addT.getText());
+						csvSb.append(",");
+						csvSb.append(phoneNum.getText());
+						csvSb.append(",");
+						csvSb.append(gT.getText());
+						csvSb.append(",");
+						csvSb.append(emailT.getText());
+						for(JTextField j : vacList) {
+							csvSb.append(",");
+							if(j.getText().contentEquals("")) {
+								csvSb.append("");
+							}
+							csvSb.append(j.getText());
+						}
 						
-						String csvStudent = fname.getText() + "," + lname.getText() + 
-								"," + ddate.getText() + "," + idT.getText() + "," + dateFormat.format(td) + "," +
-								addT.getText() + "," + phoneNum.getText();
+						
+						String csvStudent = csvSb.toString();
 						
 						FileUtil.writeTextFile(csvStudent, "students.csv");
 						GroupHelper.groupMe();	
-						m2.fireTableDataChanged();
+						//m2.fireTableDataChanged();
+						createStudentDetailsTable(scrollPane_2);
 						dd.setVisible(false);		
 					}
 		        	 
