@@ -60,6 +60,21 @@ public class Window{
 	public Window() {
 		initialize();
 	}
+	
+	public void createClassroomTable() {
+		
+	}
+	
+	public void createStudentDetailsTable(JScrollPane s2) {
+		DefaultTableModel m2 = new DefaultTableModel();
+		m2.setColumnCount(3);
+		for(Student s:GroupHelper.students) {
+			m2.addRow(new Object[] {s.getId(),s.getFirstName(),s.lastName});
+		}
+		
+		table_1 = new JTable(m2);
+		s2.setViewportView(table_1);
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -161,13 +176,15 @@ public class Window{
 		scrollPane_2.setBounds(0, 0, 429, 195);
 		immun.add(scrollPane_2);	
 		
-		DefaultTableModel m2 = new DefaultTableModel();
-		m2.setColumnCount(3);
-		for(Student s:GroupHelper.students) {
-			m2.addRow(new Object[] {s.getId(),s.getFirstName(),s.lastName});
-		}
+//		DefaultTableModel m2 = new DefaultTableModel();
+//		m2.setColumnCount(3);
+//		for(Student s:GroupHelper.students) {
+//			m2.addRow(new Object[] {s.getId(),s.getFirstName(),s.lastName});
+//		}
 		
-		table_1 = new JTable(m2);
+		createStudentDetailsTable(scrollPane_2);
+		
+		//table_1 = new JTable(m2);
 		scrollPane_2.setViewportView(table_1);
 
 		

@@ -59,27 +59,28 @@ public class Student extends AbstractPerson {
 			this.address = address;
 			this.phoneNumber = phoneNumber;
 			this.age = ConversionHelper.DateToAge(this.dob);
-			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
-			int flag = 0;
-			for(String s : tempImmu) {
-				String[] fields = s.split(",");
-				String n = fields[0];
-				List<Date> d = new ArrayList<>();
-				for(int i = 1; i < fields.length-1; i++) {
-						d.add(ConversionHelper.StringToDate(fields[i]));
-				}
-				
-				if(flag == 0) {
-					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
-				} else if(flag == 1) {
-					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
-				} else if(flag == 2) {
-					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
-				} else if(flag == 3) {
-					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
-				}
-				
-			}			
+			
+//			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
+//			int flag = 0;
+//			for(String s : tempImmu) {
+//				String[] fields = s.split(",");
+//				String n = fields[0];
+//				//List<Date> d = new ArrayList<>();
+//				for(int i = 1; i < fields.length-1; i++) {
+//						d.add(ConversionHelper.StringToDate(fields[i]));
+//				}
+//				
+//				if(flag == 0) {
+//					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
+//				} else if(flag == 1) {
+//					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
+//				} else if(flag == 2) {
+//					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
+//				} else if(flag == 3) {
+//					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
+//				}
+//				
+//			}			
 			
 		}
 		
@@ -95,26 +96,27 @@ public class Student extends AbstractPerson {
  			this.address = field[6];
  			this.phoneNumber = field[7];
  			this.age = ConversionHelper.DateToAge(this.dob);
- 			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
-			int flag = 0;
-			for(String s : tempImmu) {
-				String[] fields = s.split(",");
-				String n = fields[0];
-				List<Date> d = new ArrayList<>();
-				for(int i = 1; i < fields.length-1; i++) {
-						d.add(ConversionHelper.StringToDate(fields[i]));
-				}
-				if(flag == 0) {
-					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
-				} else if(flag == 1) {
-					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
-				} else if(flag == 2) {
-					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
-				} else if(flag == 3) {
-					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
-				}
-				
-			}			
+ 			
+// 			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
+//			int flag = 0;
+//			for(String s : tempImmu) {
+//				String[] fields = s.split(",");
+//				String n = fields[0];
+//				List<Date> d = new ArrayList<>();
+//				for(int i = 1; i < fields.length-1; i++) {
+//						d.add(ConversionHelper.StringToDate(fields[i]));
+//				}
+//				if(flag == 0) {
+//					immunisations.add(DTaPFactory.getInstance().getObject(n, d, this.age));
+//				} else if(flag == 1) {
+//					immunisations.add(RotavirusFactory.getInstance().getObject(n, d, this.age));
+//				} else if(flag == 2) {
+//					immunisations.add(HepatitisBFactory.getInstance().getObject(n, d, this.age));
+//				} else if(flag == 3) {
+//					immunisations.add(PneumococcalConjugateFactory.getInstance().getObject(n, d, this.age));
+//				}
+//				
+//			}			
 		}
 		
 		

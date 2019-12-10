@@ -14,4 +14,26 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>jgoodies-common-1.8.0-sources.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/jgoodies-common-1.8.0-sources.jar</locationURI>
+		</link>
+		<link>
+			<name>jgoodies-common-1.8.0.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/jgoodies-common-1.8.0.jar</locationURI>
+		</link>
+		<link>
+			<name>jgoodies-forms-1.8.0-sources.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/jgoodies-forms-1.8.0-sources.jar</locationURI>
+		</link>
+		<link>
+			<name>jgoodies-forms-1.8.0.jar</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/jgoodies-forms-1.8.0.jar</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

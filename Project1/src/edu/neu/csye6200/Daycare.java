@@ -12,6 +12,7 @@ public class Daycare {
 			classList.add(c);
 		}
 		
+		
 		public static void show() {
 			classList.forEach(c -> {System.out.println(); System.out.println(c);});
 		}
