@@ -24,7 +24,12 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.swing.border.BevelBorder;
@@ -35,6 +40,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import java.awt.CardLayout;
 import java.awt.GridLayout;
@@ -46,7 +52,7 @@ public class Window{
 	JLabel lblDefault;
 	private JTable table_1;
 	static int studint;
-//	pimport javax.swing.JEditorPane;
+	DefaultTableModel m2;
 
 
 	/**
@@ -69,7 +75,7 @@ public class Window{
 		DefaultTableModel m2 = new DefaultTableModel();
 		m2.setColumnCount(3);
 		for(Student s:GroupHelper.students) {
-			m2.addRow(new Object[] {s.getId(),s.getFirstName(),s.lastName});
+			m2.addRow(new Object[] {s.getStudentId(),s.getFirstName(),s.lastName});
 		}
 		
 		table_1 = new JTable(m2);
@@ -176,15 +182,13 @@ public class Window{
 		scrollPane_2.setBounds(0, 0, 429, 195);
 		immun.add(scrollPane_2);	
 		
-//		DefaultTableModel m2 = new DefaultTableModel();
-//		m2.setColumnCount(3);
-//		for(Student s:GroupHelper.students) {
-//			m2.addRow(new Object[] {s.getId(),s.getFirstName(),s.lastName});
-//		}
-		
-		createStudentDetailsTable(scrollPane_2);
-		
-		//table_1 = new JTable(m2);
+		DefaultTableModel m2 = new DefaultTableModel();
+		m2.setColumnCount(3);
+		for(Student s:GroupHelper.students) {
+			m2.addRow(new Object[] {s.getStudentId(),s.getFirstName(),s.lastName});
+		}
+
+		table_1 = new JTable(m2);
 		scrollPane_2.setViewportView(table_1);
 
 		
@@ -195,13 +199,10 @@ public class Window{
 			}	
 		});
 		
+//START// 	Get Details Students Button		
 		JButton btnNewButton = new JButton("Get Details");
 		btnNewButton.setBounds(306, 197, 117, 29);
 		immun.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Immunization Details");
-		btnNewButton_1.setBounds(126, 197, 174, 29);
-		immun.add(btnNewButton_1);
 		
 		btnNewButton.addActionListener(new ActionListener(){
 			@Override
@@ -231,10 +232,11 @@ public class Window{
 	            ln.setBounds(20,40,100,15);
 	            id.setBounds(20,60,100,15);
 	            dob.setBounds(20,80,100,15);
-	            fname.setBounds(100,20,100,15);
-	            lname.setBounds(100,40,100,15);
-	            idame.setBounds(100,60,100,15);
-	            ddate.setBounds(100,80,100,15);
+	            fname.setBounds(115,20,100,15);
+	            lname.setBounds(115,40,100,15);
+	            idame.setBounds(115,60,100,15);
+	            ddate.setBounds(115,80,100,15);
+
 	        
             
 	            pan.add(fn);
@@ -245,12 +247,211 @@ public class Window{
             	pan.add(idame);
             	pan.add(dob);
             	pan.add(ddate);
+            	
             
             	dd.add(pan);
             	dd.setVisible(true);	
 			}
 			
 		});
+//ENDD//
+		
+//START// Immunizations Details button		
+		JButton btnNewButton_1 = new JButton("Immunization Details");
+		btnNewButton_1.setBounds(126, 197, 174, 29);
+		immun.add(btnNewButton_1);
+		
+
+//END//		
+		
+//START//	Add Students Button Action		
+		JButton btnNewButton_stud = new JButton("Add Students");
+		btnNewButton_stud.setBounds(6, 197, 116, 29);
+		immun.add(btnNewButton_stud);
+		
+		btnNewButton_stud.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JDialog dd = new JDialog(frame, "Add Student"); 
+				dd.setSize(270, 590);
+				JPanel pan = new JPanel();
+				pan.setLayout(null);
+				
+				JButton addStudent = new JButton("Add Student");
+				
+				 JTextField lname = new JTextField(); 
+				 JTextField fname = new JTextField();
+				 JTextField ddate = new JTextField();
+				 JTextField idT = new JTextField();
+				 JTextField addT = new JTextField();
+				 JTextField phoneNum = new JTextField();
+				 JTextField emailT = new JTextField();
+				 JTextField gT = new JTextField();
+				 
+				 lname.setEditable(true);
+				 fname.setEditable(true);
+				 ddate.setEditable(true);
+				 idT.setEditable(true);
+				 addT.setEditable(true);
+				 phoneNum.setEditable(true);
+				 
+				 JLabel id = new JLabel("Student ID:");
+		         JLabel fn = new JLabel("First Name:");
+		         JLabel ln = new JLabel("Last Name:");
+		         JLabel dob = new JLabel("Date of Birth:");
+		         JLabel address = new JLabel("Address:");
+		         JLabel phoneNumber = new JLabel("Phone No.:");
+		         JLabel pname = new JLabel("Gaurdian Name:");
+		         JLabel email = new JLabel("E-Mail");
+		         
+		         
+		         Font f = id.getFont();
+		         id.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         fn.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         ln.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         dob.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         address.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         phoneNumber.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         pname.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         email.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         
+		         fn.setBounds(20,20,100,15);
+		         ln.setBounds(20,40,100,15);
+		         id.setBounds(20,60,100,15);
+		         dob.setBounds(20,80,100,15);
+		         address.setBounds(20,100,100,15);
+		         phoneNumber.setBounds(20,120,100,15);
+		         pname.setBounds(20,140,100,15);
+		         email.setBounds(20,160,100,15);
+		         fname.setBounds(115,20,100,15);
+		         lname.setBounds(115,40,100,15);
+		         idT.setBounds(115,60,100,15);
+		         ddate.setBounds(115,80,100,15);
+		         addT.setBounds(115,100,100,15);
+		         phoneNum.setBounds(115,120,100,15);
+		         gT.setBounds(115,140,100,15);
+		         emailT.setBounds(115,160,100,15);
+
+		         addStudent.setBounds(115,533,100,25);
+		        
+		         JLabel vac1 = new JLabel("Hepatities-B:");
+		         vac1.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         JTextField vact1 = new JTextField();
+		         JTextField vact2 = new JTextField();
+		         JTextField vact3 = new JTextField();
+		         vac1.setBounds(20,210,100,15);
+		         vact1.setBounds(115,210,100,15);
+		         vact2.setBounds(115,230,100,15);
+		         vact3.setBounds(115,250,100,15);
+		         
+		         JLabel vac2 = new JLabel("DTaP:");
+		         vac2.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         JTextField vactt1 = new JTextField();
+		         JTextField vactt2 = new JTextField();
+		         JTextField vactt3 = new JTextField();
+		         JTextField vactt4 = new JTextField();
+		         vac2.setBounds(20,270,100,15);
+		         vactt1.setBounds(115,270,100,15);
+		         vactt2.setBounds(115,290,100,15);
+		         vactt3.setBounds(115,310,100,15);
+		         vactt4.setBounds(115,330,100,15);
+		         
+		         JLabel vac3 = new JLabel("Rotavirus:");
+		         vac3.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         JTextField vacttt1 = new JTextField();
+		         JTextField vacttt2 = new JTextField();
+		         JTextField vacttt3 = new JTextField();
+		         JTextField vacttt4 = new JTextField();
+		         vac3.setBounds(20,360,100,15);
+		         vacttt1.setBounds(115,360,100,15);
+		         vacttt2.setBounds(115,380,100,15);
+		         vacttt3.setBounds(115,400,100,15);
+		         vacttt4.setBounds(115,420,100,15);
+		         
+		         JLabel vac4 = new JLabel("Pneunucoccal Conju:");
+		         vac4.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+		         JTextField vactttt1 = new JTextField();
+		         JTextField vactttt2 = new JTextField();
+		         JTextField vactttt3 = new JTextField();
+		         JTextField vactttt4 = new JTextField();
+		         vac4.setBounds(20,450,100,15);
+		         vactttt1.setBounds(115,450,100,15);
+		         vactttt2.setBounds(115,470,100,15);
+		         vactttt3.setBounds(115,490,100,15);
+		         vactttt4.setBounds(115,510,100,15);
+		         
+		         pan.add(id);
+		         pan.add(idT);
+		         pan.add(fn);
+		         pan.add(fname);
+		         pan.add(ln);
+		         pan.add(lname);
+		         pan.add(dob);
+		         pan.add(ddate);
+		         pan.add(address);
+		         pan.add(addT);
+		         pan.add(gT);
+		         pan.add(email);
+		         pan.add(emailT);
+		         pan.add(pname);
+		         pan.add(phoneNumber);
+		         pan.add(phoneNum);
+		         pan.add(addStudent);
+		         pan.add(vac1);
+		         pan.add(vact1);
+		         pan.add(vact2);
+		         pan.add(vact3);
+		         pan.add(vac2);
+		         pan.add(vactt1);
+		         pan.add(vactt2);
+		         pan.add(vactt3);
+		         pan.add(vactt4);
+		         pan.add(vac3);
+		         pan.add(vacttt1);
+		         pan.add(vacttt2);
+		         pan.add(vacttt3);	         
+		         pan.add(vacttt4);
+		         pan.add(vac4);
+		         pan.add(vactttt1);
+		         pan.add(vactttt2);
+		         pan.add(vactttt3);
+		         pan.add(vactttt4);
+
+	            
+		         dd.add(pan);
+		         dd.setVisible(true);
+		         
+		         addStudent.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						Calendar todayDate = new GregorianCalendar();
+						
+						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+						Date td = todayDate.getTime();
+						
+						String csvStudent = fname.getText() + "," + lname.getText() + 
+								"," + ddate.getText() + "," + idT.getText() + "," + dateFormat.format(td) + "," +
+								addT.getText() + "," + phoneNum.getText();
+						
+						FileUtil.writeTextFile(csvStudent, "students.csv");
+						GroupHelper.groupMe();	
+						m2.fireTableDataChanged();
+						dd.setVisible(false);		
+					}
+		        	 
+		         });
+		         
+				
+			}
+			
+		});
+//END//		
+		
+		
 		
 		JPanel settings = new JPanel();
 		tabbedPane.addTab("Settings", null, settings, null);

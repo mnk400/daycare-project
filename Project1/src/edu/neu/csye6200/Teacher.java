@@ -34,12 +34,11 @@ public class Teacher extends AbstractPerson{
 		public Teacher(String csvData) {
 			super();
  			String[] field = csvData.split(",");
- 			this.id = ConversionHelper.StringToInt(field[0]);
- 			this.firstName  = field[1];
- 			this.lastName  = field[2];
- 			this.dob = ConversionHelper.StringToDate(field[3]);
- 			this.employeeId = ConversionHelper.StringToInt(field[4]);
- 			this.joiningDate = ConversionHelper.StringToDate(field[5]);
+ 			this.firstName  = field[0];
+ 			this.lastName  = field[1];
+ 			this.dob = ConversionHelper.StringToDate(field[2]);
+ 			this.employeeId = ConversionHelper.StringToInt(field[3]);
+ 			this.joiningDate = ConversionHelper.StringToDate(field[4]);
 		}
 		
 		@Override

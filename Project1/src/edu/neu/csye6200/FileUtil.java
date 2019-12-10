@@ -12,14 +12,10 @@ import java.util.List;
 public class FileUtil {
 	
 	//This function takes a list as a parameter and writes to the file
-	public static void writeTextFile(List<String> entries, String headers, String fileName) {
+	public static void writeTextFile(List<String> entries, String fileName) {
 		File entryFile = new File(fileName);
 		try (FileWriter fileWriter = new FileWriter(entryFile, true);
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-			if (entryFile.length() == 0) {
-				bufferedWriter.write(headers);
-				bufferedWriter.newLine();
-			}
 			for (String entry : entries) {
 				bufferedWriter.write(entry);
 				bufferedWriter.newLine();
@@ -32,14 +28,10 @@ public class FileUtil {
 	}
 	
 	//This function takes a string as a parameter and writes to file
-	public static void writeTextFile(String entry, String headers, String fileName) {
+	public static void writeTextFile(String entry,  String fileName) {
 		File entryFile = new File(fileName);
 		try (FileWriter fileWriter = new FileWriter(entryFile, true);
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-			if (entryFile.length() == 0) {
-				bufferedWriter.write(headers);
-				bufferedWriter.newLine();
-			}
 			bufferedWriter.write(entry);
 			bufferedWriter.newLine();
 			

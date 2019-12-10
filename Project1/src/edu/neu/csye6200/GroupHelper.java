@@ -16,8 +16,8 @@ public class GroupHelper {
 	public static void groupMe() {
 		
 
-		
-		
+		students.clear();
+		teachers.clear();
 		List<String> tempStudents = FileUtil.readTextFile("students.csv");
 		tempStudents.forEach(student -> students.add(new Student(student)));
 	

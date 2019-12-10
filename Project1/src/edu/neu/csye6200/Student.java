@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Student extends AbstractPerson {
+		
 		int studentId;
 		Date registrationDate;
 		String address;
@@ -87,14 +88,13 @@ public class Student extends AbstractPerson {
 		public Student(String csvData) {
  			super();
  			String[] field = csvData.split(",");
- 			this.id = ConversionHelper.StringToInt(field[0]);
- 			this.firstName  = field[1];
- 			this.lastName  = field[2];
- 			this.dob = ConversionHelper.StringToDate(field[3]);
- 			this.studentId = ConversionHelper.StringToInt(field[4]);
- 			this.registrationDate = ConversionHelper.StringToDate(field[5]);
- 			this.address = field[6];
- 			this.phoneNumber = field[7];
+ 			this.firstName  = field[0];
+ 			this.lastName  = field[1];
+ 			this.dob = ConversionHelper.StringToDate(field[2]);
+ 			this.studentId = ConversionHelper.StringToInt(field[3]);
+ 			this.registrationDate = ConversionHelper.StringToDate(field[4]);
+ 			this.address = field[5];
+ 			this.phoneNumber = field[6];
  			this.age = ConversionHelper.DateToAge(this.dob);
  			
 // 			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
