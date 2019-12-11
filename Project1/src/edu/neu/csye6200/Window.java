@@ -261,6 +261,27 @@ public class Window{
 		JButton btnNewButton_1 = new JButton("Immunization Details");
 		btnNewButton_1.setBounds(126, 197, 174, 29);
 		immun.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JDialog ap = new JDialog(frame, "Immunization Details");
+				ap.setSize(300,200);
+				JPanel pab = new JPanel();
+				pab.setLayout(null);
+				String temp="";
+				for(int i=0;i<4;i++) {
+				temp = temp + GroupHelper.students.get(studint).getImmunisations().get(i).printImmunization(GroupHelper.students.get(studint)) + "\n";
+				}
+				JTextArea messages = new JTextArea(temp);
+				messages.setBounds(6,6,400,200);
+				pab.add(messages);
+				ap.add(pab);
+				ap.setVisible(true);
+				
+			}
+			
+		});
 		
 
 //END//		
@@ -471,7 +492,7 @@ public class Window{
 						for(JTextField j : vacList) {
 							csvSb.append(",");
 							if(j.getText().contentEquals("")) {
-								csvSb.append("");
+								csvSb.append("0");
 							}
 							csvSb.append(j.getText());
 						}

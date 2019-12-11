@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
+import edu.neu.csye6200.immunisations.AbstractImmunization;
+
 public class GroupHelper {
 
 	static int currentTeacherIndexFlag = 0; 
@@ -97,9 +99,6 @@ public class GroupHelper {
 		
 		parseAddTeacher(teachers, Daycare.getClassroom());
 		//System.out.println(Daycare.getClassroom());
-		
-		NotificationHelper.timer.cancel();
-		NotificationHelper.timer.purge();
 		NotificationHelper.configureTask();
 		
 	}

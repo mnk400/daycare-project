@@ -92,10 +92,7 @@ public class Student extends AbstractPerson {
 			this.age = ConversionHelper.DateToAge(this.dob);
 			this.guardianName = guardianName;
 			this.guardianEmail = guardianEmail;
-			
-			for(int i = 0; i < 4; i++) {
-				
-			}
+
 //			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
 //			int flag = 0;
 //			for(String s : tempImmu) {
@@ -139,10 +136,12 @@ public class Student extends AbstractPerson {
  			List<Date> DTaP = new ArrayList<>();
  			List<Date> rotavirus = new ArrayList<>();
  			List<Date> pneumococcalConjugate = new ArrayList<>();
- 			for(int i = 9; i < 22; i++) {
- 				if(field[i].contentEquals("")) {
+ 			for(int i = 9; i < 23; i++) {
+ 				System.out.println(field[i]);
+ 				if(field[i].contentEquals("0")) {	
  					
- 				} else {
+ 				} 
+ 				else {
  					if(i >= 9 && i < 12) {
  	 					hepatitisB.add(ConversionHelper.StringToDate(field[i]));
  	 				} 

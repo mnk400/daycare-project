@@ -50,6 +50,7 @@ public class FileUtil {
 			String line ="";
 			while((line = bufferedReader.readLine())!=null) {
 				entries.add(line);
+				System.out.println(line);
 			}
 			
 			

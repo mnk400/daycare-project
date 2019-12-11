@@ -11,16 +11,35 @@ public class HepatitisB extends AbstractImmunization{
 		this.immuDate = immuDate;
 		this.age = age;
 	}
+	
 	@Override
 	public void checkImmunization(Student s) {
-		if(immuDate.get(2) == null && this.age >= 15) {
-			Mailer m = new Mailer("daycarecsye6200pmv@gmail.com", s.getGuardianEmail());
+		Mailer m = new Mailer(s.getGuardianEmail());
+		if(immuDate.size() < 3 && s.getAge() >= 15) {	
+			System.out.println(s.getAge());
 			m.setVaccine(this.immunizationName);
 			m.setDose("3");
-			m.setStudName(s.getFirstName() + s.getLastName());
-		} else if(immuDate.get(2) == null && this.age < 15) {
-			System.out.println("Lagwane ka time aagya hai");
+			m.setStudName(s.getFirstName() + " " + s.getLastName());
+			m.setRecpName(s.getGuardianName());
+			m.sendImmunizationNotificationMail();
+		} else if(immuDate.size() < 3 && s.getAge() >= 18) {
+			m.setVaccine(this.immunizationName);
+			m.setDose("3");
+			m.setStudName(s.getFirstName() + " " + s.getLastName());
+			m.setRecpName(s.getGuardianName());
+			m.sendImmunizationWarning();
+		
 		} 
+	}
+	
+public String printImmunization(Student s) {
+		
+		if(immuDate.size() < 3 && s.getAge() >= 15) {	
+			return "Hepatitis B reminder";
+		} else if(immuDate.size() < 3 && s.getAge() >= 18) {
+			return "Hepatitis B late";
+		} 
+		return "";
 	}
 
 }

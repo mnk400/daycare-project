@@ -11,4 +11,5 @@ public abstract class AbstractImmunization {
 	List<Date> immuDate = new ArrayList<>();
 	int age;
 	public abstract void checkImmunization(Student s);
+	public abstract String printImmunization(Student s);
 }

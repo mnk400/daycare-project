@@ -13,14 +13,31 @@ public class Rotavirus extends AbstractImmunization {
 	@Override
 	public void checkImmunization(Student s) {
 		// TODO Auto-generated method stub
-		if(immuDate.get(2) == null && this.age >= 6 && this.age <= 8) {
-			Mailer m = new Mailer("daycarecsye6200pmv@gmail.com", s.getGuardianEmail());
+		Mailer m = new Mailer( s.getGuardianEmail());
+		if(immuDate.size() < 3 && this.age >= 6 && this.age <= 8) {
 			m.setVaccine(this.immunizationName);
 			m.setDose("3");
-			m.setStudName(s.getFirstName() + s.getLastName());
-		} else if(immuDate.get(2) == null && this.age > 8) {
-			System.out.println("You must take your third rotavirus dose");
+			m.setStudName(s.getFirstName() + " " + s.getLastName());
+			m.setRecpName(s.getGuardianName());
+			m.sendImmunizationNotificationMail();
+		} else if(immuDate.size() < 3 && this.age > 8) {
+			m.setVaccine(this.immunizationName);
+			m.setDose("3");
+			m.setStudName(s.getFirstName() + " " + s.getLastName());
+			m.setRecpName(s.getGuardianName());
+			m.sendImmunizationWarning();
+			
 		} 
+	}
+	
+	public String printImmunization(Student s) {
+		// TODO Auto-generated method stub
+		if(immuDate.size() < 3 && this.age >= 6 && this.age <= 8) {
+			return "Time for Rotavirus dose";
+		} else if(immuDate.size() < 3 && this.age > 8) {
+			return "Rotavirus dose overdue";
+		} 
+		return "";
 	}
 
 }
