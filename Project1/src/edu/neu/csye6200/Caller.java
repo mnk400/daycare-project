@@ -7,8 +7,8 @@ import com.twilio.rest.api.v2010.account.Call;
 import com.twilio.type.PhoneNumber;
 public class Caller {
 	
-	public static final String ACCOUNT_SID = "ACacef95bb923c25c0f70f928c7289a068";
-    public static final String AUTH_TOKEN = "ad59b22234a711980b4d141806376ccf";
+	public static final String ACCOUNT_SID = "account_sid";
+    public static final String AUTH_TOKEN = "auth_token";
 
 	public static void demo() {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
