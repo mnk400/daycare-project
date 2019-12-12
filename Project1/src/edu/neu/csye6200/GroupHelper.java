@@ -12,7 +12,8 @@ import edu.neu.csye6200.immunisations.AbstractImmunization;
 public class GroupHelper {
 
 	static int currentTeacherIndexFlag = 0; 
-	
+	static String studentfile = "students.csv";
+	static String teachersfile = "teachers.csv";
 	static List<Student> students = new ArrayList<>();
 	static List<Teacher> teachers = new ArrayList<>();
 	public static void groupMe() {
@@ -20,10 +21,10 @@ public class GroupHelper {
 
 		students.clear();
 		teachers.clear();
-		List<String> tempStudents = FileUtil.readTextFile("students.csv");
+		List<String> tempStudents = FileUtil.readTextFile(studentfile);
 		tempStudents.forEach(student -> students.add(new Student(student)));
 	
-		List<String> tempTeachers = FileUtil.readTextFile("teachers.csv");
+		List<String> tempTeachers = FileUtil.readTextFile(teachersfile);
 		tempTeachers.forEach(teacher -> teachers.add(new Teacher(teacher)));
 	
 		List<Student> sixToTwelve = students.stream().filter(student -> student.getAge() >= 6 && student.getAge() <= 12).collect(Collectors.toList());
@@ -99,7 +100,7 @@ public class GroupHelper {
 		
 		parseAddTeacher(teachers, Daycare.getClassroom());
 		//System.out.println(Daycare.getClassroom());
-		NotificationHelper.configureTask();
+		
 		
 	}
 	

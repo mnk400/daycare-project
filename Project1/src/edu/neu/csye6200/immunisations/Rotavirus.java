@@ -19,12 +19,14 @@ public class Rotavirus extends AbstractImmunization {
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationNotificationMail();
 		} else if(immuDate.size() < 3 && this.age > 8) {
 			m.setVaccine(this.immunizationName);
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationWarning();
 			
 		} 
@@ -33,11 +35,11 @@ public class Rotavirus extends AbstractImmunization {
 	public String printImmunization(Student s) {
 		// TODO Auto-generated method stub
 		if(immuDate.size() < 3 && this.age >= 6 && this.age <= 8) {
-			return "Time for Rotavirus dose";
+			return "Due: 3rd dose of Rotavirus";
 		} else if(immuDate.size() < 3 && this.age > 8) {
-			return "Rotavirus dose overdue";
+			return "Overdue: 3rd dose of Rotavirus";
 		} 
-		return "";
+		return "Rotavirus vaccine up to date";
 	}
 
 }

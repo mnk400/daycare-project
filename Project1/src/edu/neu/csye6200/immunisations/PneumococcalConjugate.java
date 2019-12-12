@@ -19,11 +19,13 @@ public class PneumococcalConjugate extends AbstractImmunization {
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationNotificationMail();
 		} else if(immuDate.size() < 3 && this.age > 8) {
 			m.setVaccine(this.immunizationName);
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.setRecpName(s.getGuardianName());
 			m.sendImmunizationWarning();
 		} else if(immuDate.size() == 3 && this.age >=12 && this.age <=18) {
@@ -31,18 +33,21 @@ public class PneumococcalConjugate extends AbstractImmunization {
 			m.setDose("4");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationNotificationMail();
 		} else if(immuDate.size() == 3 && this.age >=18) {
 			m.setVaccine(this.immunizationName);
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " +s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationWarning();
 		} else if(immuDate.size() < 3 && this.age >= 12) {
 			m.setVaccine(this.immunizationName);
 			m.setDose("3 and 4");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationWarning();
 		}
 
@@ -52,18 +57,18 @@ public class PneumococcalConjugate extends AbstractImmunization {
 	public String printImmunization(Student s) {
 		// TODO Auto-generated method stub
 		if(immuDate.size() < 3 && this.age >= 6 && this.age <= 8) {
-			return "Third Dose for Pneumococcal Conjucate";
+			return "Due: 3rd dose of Pneumococcal Conjugate";
 		} else if(immuDate.size() < 3 && this.age > 8) {
-			return "Late for third dose";
+			return "Overdue: 3rd dose of Pneumococcal Conjugate";
 		} else if(immuDate.size() == 3 && this.age >=12 && this.age <=18) {
-			return "Fourth Dose for Pneumococcal Conjucate";
+			return "Due: 4th dose of Pneumococcal Conjugate";
 		} else if(immuDate.size() == 3 && this.age >=18) {
-			return "Fourth Pneumococcal Conjucate Dose overdue";
+			return "Overdue: 4th dose of Pneumococcal Conjugate";
 		} else if(immuDate.size() < 3 && this.age >= 12) {
-			return "Third and Fourth Pneumococcal Conjucate Dose overdue";
+			return "Overdue: 3rd and 4th dose of Pneumococcal Conjugate";
 		}
 		
-		return "";
+		return "Pneumococcal Conjugate vaccine up to date";
 		
 	}
 

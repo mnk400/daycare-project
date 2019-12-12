@@ -21,12 +21,14 @@ public class HepatitisB extends AbstractImmunization{
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationNotificationMail();
 		} else if(immuDate.size() < 3 && s.getAge() >= 18) {
 			m.setVaccine(this.immunizationName);
 			m.setDose("3");
 			m.setStudName(s.getFirstName() + " " + s.getLastName());
 			m.setRecpName(s.getGuardianName());
+			m.setPhoneNum(s.getPhoneNumber());
 			m.sendImmunizationWarning();
 		
 		} 
@@ -35,11 +37,11 @@ public class HepatitisB extends AbstractImmunization{
 public String printImmunization(Student s) {
 		
 		if(immuDate.size() < 3 && s.getAge() >= 15) {	
-			return "Hepatitis B reminder";
+			return "Due: 3rd dose of Hepatitis B";
 		} else if(immuDate.size() < 3 && s.getAge() >= 18) {
-			return "Hepatitis B late";
+			return "Overdue: 3rd dose of Hepatitis B";
 		} 
-		return "";
+		return "Hepatitis B vaccine up to date";
 	}
 
 }

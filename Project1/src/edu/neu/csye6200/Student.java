@@ -4,6 +4,7 @@ import java.text.ParseException;
 import edu.neu.csye6200.immunisations.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Student extends AbstractPerson {
 		String guardianName;
 		String guardianEmail;
 		List<Date> immunisationDates = new ArrayList<>();
-		
+		private Date annualRegistrationDate;
 		
 		int age;
 		
@@ -72,6 +73,12 @@ public class Student extends AbstractPerson {
 		}
 		
 		
+		public Date getAnnualRegistrationDate() {
+			return annualRegistrationDate;
+		}
+		public void setAnnualRegistrationDate(Date annualRegistrationDate) {
+			this.annualRegistrationDate = annualRegistrationDate;
+		}
 		public List<AbstractImmunization> getImmunisations() {
 			return immunisations;
 		}
@@ -93,6 +100,10 @@ public class Student extends AbstractPerson {
 			this.guardianName = guardianName;
 			this.guardianEmail = guardianEmail;
 
+			Calendar c = Calendar.getInstance();
+			c.setTime(this.registrationDate);
+			c.add(c.WEEK_OF_YEAR, 51);
+			this.annualRegistrationDate = c.getTime();
 //			List<String> tempImmu = FileUtil.readTextFile(this.studentId+"immn.csv");
 //			int flag = 0;
 //			for(String s : tempImmu) {
@@ -130,7 +141,10 @@ public class Student extends AbstractPerson {
  			this.guardianName = field[7];
  			this.guardianEmail = field[8];
  			this.age = ConversionHelper.DateToAge(this.dob);
- 			
+ 			Calendar c = Calendar.getInstance();
+			c.setTime(this.registrationDate);
+			c.add(c.YEAR, 1);
+			this.annualRegistrationDate = c.getTime();
  			int flag = 0;
  			List<Date> hepatitisB = new ArrayList<>();
  			List<Date> DTaP = new ArrayList<>();
