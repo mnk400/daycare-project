@@ -29,20 +29,6 @@ public class Daycare {
 			NotificationHelper.configureTask();
 			Thread t = new ReviewNotifyTask();
 			t.start();
-			//Daycare.show();
-			//loadImmunizationRules();
-			
-			
-			
+	
 		}
-//		
-//		public static void setAnnualDates() {
-//			//for(Student s : GroupHelper.students) {
-//		//		NotificationHelper.configureTask(s.getAnnualRegistrationDate());
-//		//	}
-//			
-//			
-//		}
-		
-		
 }

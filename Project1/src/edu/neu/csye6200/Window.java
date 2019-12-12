@@ -69,9 +69,6 @@ public class Window{
 		initialize();
 	}
 	
-	public void createClassroomTable() {
-		
-	}
 	
 	public void createStudentDetailsTable(JScrollPane s2) {
 		DefaultTableModel m2 = new DefaultTableModel();
@@ -215,32 +212,59 @@ public class Window{
 				//WindowSubViews view2 = new WindowSubViews();
 				//view2.initializeDetails();
 				JDialog dd = new JDialog(frame, GroupHelper.students.get(studint).getFirstName() + " " + GroupHelper.students.get(studint).getLastName()); 
-				dd.setSize(270,330);
+				dd.setSize(330,270);
 				JPanel pan = new JPanel();
 				pan.setLayout(null);
 				
 	            JLabel lname = new JLabel(GroupHelper.students.get(studint).getLastName()); 
 	            JLabel fname = new JLabel(GroupHelper.students.get(studint).getFirstName());
 	            JLabel ddate = new JLabel(ConversionHelper.DateToString(GroupHelper.students.get(studint).getDob()));
+	            JLabel gName = new JLabel(GroupHelper.students.get(studint).getGuardianName());
+	            JLabel gEmail = new JLabel(GroupHelper.students.get(studint).getGuardianEmail());
+	            JLabel age = new JLabel(String.valueOf(GroupHelper.students.get(studint).getAge())+" months");
+	            JLabel phoneNum = new JLabel(GroupHelper.students.get(studint).getPhoneNumber());
+	            JLabel addr = new JLabel(GroupHelper.students.get(studint).getAddress());
+	            
+	            
 	        
 	            JLabel id = new JLabel("Student ID:");
-	            JLabel fn = new JLabel("First Name");
-	            JLabel ln = new JLabel("Last Name");
-	            JLabel dob = new JLabel("Date of Birth");
+	            JLabel fn = new JLabel("First Name:");
+	            JLabel ln = new JLabel("Last Name:");
+	            JLabel dob = new JLabel("Date of Birth:");
+	            JLabel ageL = new JLabel("Age:");
+	            JLabel gNameL = new JLabel("Guardian Name:");
+	            JLabel gEmailL = new JLabel("Guardian Email:");
+	            JLabel gPhoneNum = new JLabel("Contact Number:");
+	            JLabel addrL = new JLabel("Address");
 	            Font f = id.getFont();
 	            id.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 	            fn.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 	            ln.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 	            dob.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            ageL.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            gNameL.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            gEmailL.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            gPhoneNum.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+	            addrL.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
 	            JLabel idame = new JLabel(Integer.toString(GroupHelper.students.get(studint).getStudentId()));
-	            fn.setBounds(20,20,100,15);
-	            ln.setBounds(20,40,100,15);
-	            id.setBounds(20,60,100,15);
-	            dob.setBounds(20,80,100,15);
-	            fname.setBounds(115,20,100,15);
-	            lname.setBounds(115,40,100,15);
-	            idame.setBounds(115,60,100,15);
-	            ddate.setBounds(115,80,100,15);
+	            fn.setBounds(20,20,140,15);
+	            ln.setBounds(20,40,140,15);
+	            id.setBounds(20,60,140,15);
+	            dob.setBounds(20,80,140,15);
+	            ageL.setBounds(20,100,140,15);
+	            gNameL.setBounds(20,120,140,15);
+	            gEmailL.setBounds(20,140,140,15);
+	            gPhoneNum.setBounds(20,160,140,15);
+	            addrL.setBounds(20,180,140,15);
+	            fname.setBounds(145,20,100,15);
+	            lname.setBounds(145,40,100,15);
+	            idame.setBounds(145,60,100,15);
+	            ddate.setBounds(145,80,100,15);
+	            age.setBounds(145,100,100,15);
+	            gName.setBounds(145,120,100,15);
+	            gEmail.setBounds(145,140,160,15);
+	            phoneNum.setBounds(145,160,100,15);
+	            addr.setBounds(145,180,100,15);
 
 	        
             
@@ -252,6 +276,17 @@ public class Window{
             	pan.add(idame);
             	pan.add(dob);
             	pan.add(ddate);
+            	pan.add(ageL);
+            	pan.add(age);
+            	pan.add(gName);
+            	pan.add(gNameL);
+            	pan.add(gEmail);
+            	pan.add(gEmailL);
+            	pan.add(phoneNum);
+            	pan.add(gPhoneNum);
+            	pan.add(addr);
+            	pan.add(addrL);
+            	
             	
             
             	dd.add(pan);

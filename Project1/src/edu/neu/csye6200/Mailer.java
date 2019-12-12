@@ -119,12 +119,12 @@ public class Mailer {
 
 	public void sendImmunizationNotificationMail() {
 		try {
-			System.out.println("sending mail");
+			//System.out.println("sending mail");
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject("Reminder: Your ward is due for their vaccine");
-			message.setText("Dear " + this.getRecpName() + "," + "\n" + "Your ward" + this.getStudName() + " is due for their " + this.getDose() + "dose of the " + this.getVaccine() + " vaccination" + "\n" + "Sincerely," + "\n" + "Daycare - CSY6200");
+			message.setText("Dear " + this.getRecpName() + "," + "\n" + "Your ward " + this.getStudName() + " is due for their " + this.getDose() + "dose of the " + this.getVaccine() + " vaccination" + "\n" + "Sincerely," + "\n" + "Daycare - CSY6200");
 
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.phoneNum+"@tmomail.net"));
 			Transport transport = this.session.getTransport("smtp");
@@ -139,7 +139,7 @@ public class Mailer {
 	
 	public void sendImmunizationWarning() {
 		try {
-			System.out.println("sending mail");
+			//System.out.println("sending mail");
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
@@ -157,7 +157,7 @@ public class Mailer {
 	
 	public void sendAnnualReviewMessage() {
 		try {
-			System.out.println("sending mail");
+			//System.out.println("sending mail");
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
@@ -174,7 +174,7 @@ public class Mailer {
 	
 	public void sendAnnualRegistrationMessage() {
 		try {
-			System.out.println("sending mail");
+			//System.out.println("sending mail");
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));

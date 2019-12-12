@@ -5,17 +5,8 @@ import java.awt.EventQueue;
 public class Driver {
 
 	public static void main(String[] args) {
-		//Student s1 = new Student("1,Pallak,Singh,4/5/2019,3,9/5/2019,agafgsf,2351235");
-		//System.out.println(s1);
-		
+
 		Daycare.demo();
-//		for(Classroom c : Daycare.getClassroom()) {
-//			for(Group g : c.getGroups()) {
-//				for(Student s : g.getStudents()) {
-//					System.out.println(s.toString());
-//				}
-//			}
-//		}
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
