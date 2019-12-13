@@ -13,8 +13,8 @@ public class Caller {
 	public static void demo() {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-        String from = "+1 269 301 1089";
-        String to = "+1 857-294-5709";
+        String from = "";
+        String to = "";
         //2015846351
         Call call = null;
 		try {
